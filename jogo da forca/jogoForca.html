@@ -97,7 +97,7 @@
                     if (contadorChances === 6){
                         naoTemLetra.innerHTML = `Ops! você Perdeu! a palavra era "${palavraSorteada}"!`;
                         let img = window.document.getElementById('img');
-                        img.src = '7.png';
+                        img.src = 'perdeu.png';
                         const tempoDeAtraso = 2000;
                         setTimeout(() => { //para atrar um pouco o recarregamento da pagina
                             window.location.reload(); //recarrega a pagina
@@ -108,6 +108,8 @@
                 else if (palavraSorteada === letra) {
                     let palavraCerta = window.document.getElementById('avisos');
                     palavraCerta.innerHTML = `Parabens você acertou! a palavra era "${letra}"!`;
+                    let img = window.document.getElementById('img');
+                    img.src = 'ganhou.png';
                     const tempoDeAtraso = 2000;
                         setTimeout(() => { //para atrar um pouco o recarregamento da pagina
                             window.location.reload(); //recarrega a pagina
@@ -140,7 +142,7 @@
                         }
                     else if (contadorChances === 6) { //se o contador cehegar a 5(numero de chances) você perde
                             let img = window.document.getElementById('img');
-                            img.src = '7.png';
+                            img.src = 'perdeu.png';
                             palavraCerta.innerHTML = `Ops! você Perdeu! a palavra era "${palavraSorteada}"!`;
                             const tempoDeAtraso = 2000;
                             setTimeout(() => { //para atrar um pouco o recarregamento da pagina
