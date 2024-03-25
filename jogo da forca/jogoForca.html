@@ -40,13 +40,17 @@
             }
             function verificarLetra() {
                 let letra = window.document.getElementById('letraEscolhida').value; //pegando o dado da entrada do usuario
-                contador = 0;
+                contador = -1;
+
+
                 // vendo se a letra ja foi
-                listaJaForam.push(letra) //adicionado itens na lista
+                let verificaçao = listaJaForam.includes(letra) //vendo se a letra ou palavra ja esta na lista
+                if (verificaçao == false) {
+                    listaJaForam.push(letra) //adicionado itens na lista
+                }
                 let jaForam = window.document.getElementById('jaForam') //mostrando as letras que ja foram
                 jaForam.innerHTML = listaJaForam //mostrando na interface as palavras e letras que ja foram
                 console.log(listaJaForam)
-
 
                 let letraa = ''
                 for (let i of palavraSorteada) {
@@ -62,7 +66,7 @@
                 if (letraa == 'sim') {
                     console.log('tem');
                     let palavraNaTela = window.document.getElementById('palavraNaTela');
-                    let novoTexto = palavraNaTela.innerText.substring(0, contador -1) + letra + palavraNaTela.innerText.substring(contador + 1);
+                    let novoTexto = palavraNaTela.innerText.substring(0, contador) + letra + palavraNaTela.innerText.substring(contador + 1);
                     palavraNaTela.innerText = novoTexto;
                     let TemLetra = window.document.getElementById('avisos');
                     TemLetra.innerHTML = `Continue assim! A letra "${letra}" está na palavra!`;
@@ -116,7 +120,7 @@
                         },tempoDeAtraso);
                        
                 }
-                else if (palavraSorteada !== letra && letra.length > 3) {
+                else if (palavraSorteada !== letra && letra.length >= 2) {
                     let palavraCerta = window.document.getElementById('avisos');
                     palavraCerta.innerHTML = `Ops! você errou! a palavra não era "${letra}"!`;
                     contadorChances = contadorChances + 1;
